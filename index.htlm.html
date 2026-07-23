@@ -1,0 +1,2434 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUMH Traders</title>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts for Stylish Title -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* SOCIAL LINKS STYLING */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 1.8rem;
+            margin-top: 10px;
+        }
+
+        .social-links a {
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .social-links a .fa-whatsapp { color: #25D366; }
+        .social-links a:hover .fa-whatsapp {
+            color: #128C7E;
+            transform: scale(1.25);
+            filter: drop-shadow(0 0 8px rgba(37, 211, 102, 0.6));
+        }
+
+        .social-links a .fa-tiktok {
+            color: #111111;
+            background: #ffffff;
+            padding: 6px;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .social-links a:hover .fa-tiktok {
+            color: #ffffff;
+            background: #FE2C55;
+            transform: scale(1.25);
+            box-shadow: 0 0 12px rgba(254, 44, 85, 0.7);
+        }
+
+        .social-links a .fa-facebook { color: #1877F2; }
+        .social-links a:hover .fa-facebook {
+            color: #0d52ab;
+            transform: scale(1.25);
+            filter: drop-shadow(0 0 8px rgba(24, 119, 242, 0.6));
+        }
+
+        .social-links a .fa-instagram { color: #E4405F; }
+        .social-links a:hover .fa-instagram {
+            color: #b81d40;
+            transform: scale(1.25);
+            filter: drop-shadow(0 0 8px rgba(228, 64, 95, 0.6));
+        }
+
+        :root {
+            --primary-color: #232f3e;
+            --accent-color: #f3a847;
+            --bg-color: #f4f4f4;
+            --text-color: #333;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* 1. FIRST PAGE (SPLASH SCREEN BACKGROUND IMAGE) */
+        #splash-screen {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('https://res.cloudinary.com/bqasq7fp/image/upload/v1784642671/backgroung_image_spduvz.jpg');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .content-page {
+            padding: 20px;
+            min-height: 80vh;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            #splash-screen, .content-page {
+                background-size: contain !important;
+                background-color: #000 !important;
+                background-repeat: no-repeat !important;
+            }
+        }
+
+        .splash-step-1 {
+            animation: fadeInOut 3s forwards;
+        }
+
+        .splash-step-1 h1 {
+            font-size: 3.8rem;
+            color: var(--accent-color);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(243, 168, 71, 0.4);
+        }
+
+        .splash-step-1 p {
+            font-size: 2rem;
+            margin-top: 15px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #e0e0e0;
+        }
+
+        .splash-step-2 {
+            display: none;
+            animation: fadeIn 1s forwards;
+        }
+
+        .splash-step-2 h2 {
+            font-size: 3.2rem;
+            color: var(--accent-color);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            margin-top: 15px;
+            letter-spacing: 1px;
+        }
+
+        .splash-logo-img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-color);
+            margin: 0 auto 15px auto;
+            transition: all 1s ease;
+            box-shadow: 0 0 25px rgba(243, 168, 71, 0.6);
+            display: block;
+        }
+
+        .header-logo-img {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent-color);
+            box-shadow: 0 0 8px rgba(243, 168, 71, 0.5);
+            display: block;
+        }
+
+        .go-btn {
+            margin-top: 25px;
+            padding: 12px 45px;
+            background: var(--accent-color);
+            border: none;
+            color: #000;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(243, 168, 71, 0.4);
+        }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.1); }
+            100% { opacity: 0; transform: scale(1); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .zoom-expand {
+            position: fixed !important;
+            top: 50% !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%) scale(15) !important;
+            opacity: 0 !important;
+            transition: all 1.2s ease-in-out !important;
+        }
+
+        #home-view {
+            background: linear-gradient(rgba(244, 244, 244, 0.92), rgba(244, 244, 244, 0.92)), url('https://picsum.photos/1920/1080?random=101') no-repeat center center fixed / cover;
+            min-height: 100vh;
+        }
+
+        header {
+            background: var(--primary-color);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+        }
+
+        .top-center .stylish-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            background: linear-gradient(45deg, #ffffff, #f3a847, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+            margin: 0;
+        }
+
+        .top-right {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            position: relative;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .badge {
+            position: absolute;
+            top: -5px;
+            right: -8px;
+            background: red;
+            color: white;
+            font-size: 0.7rem;
+            border-radius: 50%;
+            padding: 2px 5px;
+        }
+
+        .notification-dropdown {
+            display: none;
+            position: absolute;
+            top: 40px;
+            right: 0;
+            width: 280px;
+            background: white;
+            color: #333;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 1001;
+            overflow: hidden;
+        }
+
+        .notif-header {
+            background: #f4f4f4;
+            padding: 10px;
+            font-weight: bold;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .notif-list {
+            max-height: 250px;
+            overflow-y: auto;
+        }
+
+        .notif-item {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .notif-empty {
+            padding: 15px;
+            text-align: center;
+            color: #777;
+            font-size: 0.85rem;
+        }
+
+        .search-bar-row {
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+            background: #2c3e50;
+            gap: 10px;
+        }
+
+        .menu-btn {
+            font-size: 1.4rem;
+            color: white;
+            cursor: pointer;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 8px 12px;
+            border-radius: 4px;
+            border: none;
+            outline: none;
+        }
+
+        .marquee-container {
+            background: #ffeb3b;
+            color: #000;
+            padding: 5px 0;
+            font-weight: bold;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .marquee-text {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 15s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-100%, 0); }
+        }
+
+        .category-section {
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://res.cloudinary.com/bqasq7fp/image/upload/v1784642671/backgroung_image_spduvz.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 30px 15px;
+            color: white;
+            text-align: center;
+        }
+
+        .category-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .add-cat-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .category-list {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .category-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.4);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .category-card.active-cat {
+            background: var(--accent-color);
+            color: #000;
+            font-weight: bold;
+        }
+
+        .cat-actions {
+            display: flex;
+            gap: 5px;
+            margin-left: 5px;
+        }
+
+        .cat-action-btn {
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            font-size: 0.75rem;
+            opacity: 0.8;
+        }
+
+        .products-container {
+            padding: 20px 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 15px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-card.hidden-card {
+            opacity: 0.5;
+            border: 2px dashed #6c757d;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+        }
+
+        .product-card.sold-out img {
+            filter: grayscale(80%);
+            opacity: 0.7;
+        }
+
+        .sold-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #d9534f;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 3px;
+            text-transform: uppercase;
+            z-index: 2;
+        }
+
+        .hidden-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #6c757d;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 3px;
+            text-transform: uppercase;
+            z-index: 2;
+        }
+
+        .product-card-body {
+            padding: 10px;
+        }
+
+        .product-card-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 3px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* PRICE STYLING */
+        .price-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 2px;
+        }
+
+        .product-card-price {
+            color: #e47911;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+
+        .product-original-price {
+            color: #888888;
+            font-size: 0.75rem;
+            text-decoration: line-through;
+            font-weight: normal;
+        }
+
+        .stock-qty-text {
+            font-size: 0.75rem;
+            color: #555;
+            margin-top: 3px;
+        }
+
+        .qty-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #f8f9fa;
+            border-top: 1px solid #eee;
+            padding: 5px 10px;
+        }
+
+        .qty-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .admin-action-bar {
+            display: flex;
+            justify-content: space-between;
+            background: #e9ecef;
+            padding: 6px 12px;
+            border-top: 1px solid #ddd;
+        }
+
+        .admin-btn {
+            background: none;
+            border: none;
+            font-size: 0.8rem;
+            cursor: pointer;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .btn-hide { color: #17a2b8; }
+        .btn-edit { color: #ffc107; }
+        .btn-delete { color: #dc3545; }
+
+        .like-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255,255,255,0.8);
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            color: #ccc;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .like-btn.liked { color: red; }
+
+        .product-share-bar {
+            display: flex;
+            border-top: 1px solid #eee;
+            background: #fafafa;
+        }
+
+        .share-btn-item {
+            flex: 1;
+            padding: 6px 0;
+            border: none;
+            background: transparent;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: #555;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .share-btn-item:first-child {
+            border-right: 1px solid #eee;
+        }
+
+        .share-apps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .share-app-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 8px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.2s ease;
+            border: 1px solid #eee;
+        }
+
+        .share-app-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .share-app-item i {
+            font-size: 1.8rem;
+            margin-bottom: 6px;
+        }
+
+        .share-app-item span {
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        footer {
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            transition: transform 0.3s ease;
+            z-index: 900;
+        }
+
+        footer.hide { transform: translateY(100%); }
+
+        .side-nav {
+            position: fixed;
+            top: 0; left: -280px;
+            width: 280px; height: 100%;
+            background: #fff;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+            transition: left 0.3s ease;
+            z-index: 2000;
+            padding-top: 20px;
+        }
+
+        .side-nav.open { left: 0; }
+
+        .side-nav ul { list-style: none; }
+
+        .side-nav ul li a {
+            display: block;
+            padding: 15px 20px;
+            color: #333;
+            text-decoration: none;
+            border-bottom: 1px solid #eee;
+            font-weight: 500;
+        }
+
+        .overlay {
+            position: fixed;
+            top:0; left:0; width:100%; height:100%;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            z-index: 1500;
+        }
+
+        .page-view { display: none; padding-bottom: 70px; }
+        .page-view.active { display: block; }
+
+        .detail-header {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            background: #fff;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .media-container {
+            width: 100%;
+            max-height: 350px;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .media-container img, .media-container video {
+            max-width: 100%;
+            max-height: 350px;
+            object-fit: contain;
+        }
+
+        .gallery-thumbnails {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 10px;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+        }
+
+        .thumb-item {
+            width: 60px;
+            height: 60px;
+            border-radius: 6px;
+            object-fit: cover;
+            cursor: pointer;
+            border: 2px solid #ddd;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .thumb-item.active-thumb {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 5px rgba(243, 168, 71, 0.8);
+        }
+
+        .thumb-video-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .thumb-video-wrapper i {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-size: 1rem;
+            pointer-events: none;
+            text-shadow: 0 0 4px #000;
+        }
+
+        .detail-body { padding: 15px; background: white; }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin: 10px 0;
+        }
+
+        .btn-add-cart {
+            width: 100%;
+            background: #f0c14b;
+            border: 1px solid #a88734;
+            padding: 12px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 15px 0;
+        }
+
+        .btn-wishlist-only {
+            width: 100%;
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 15px 0;
+        }
+
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            margin-top: 15px;
+        }
+
+        .cart-table th, .cart-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        .checkout-form {
+            background: white;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+
+        .form-group { margin-bottom: 10px; }
+        .form-group label { display: block; margin-bottom: 3px; font-size: 0.9rem; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .content-box {
+            background: rgba(0, 0, 0, 0.75);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .btn-edit-page {
+            background: #ffc107;
+            color: #000;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            display: inline-block;
+        }
+
+        .admin-fab-container {
+            position: fixed;
+            bottom: 70px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .admin-fab {
+            background: #28a745;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .admin-fab-notif { background: #17a2b8; font-size: 1.1rem; }
+        .admin-fab-marquee { background: #e47911; font-size: 1.1rem; }
+        .admin-fab-social { background: #9c27b0; font-size: 1.1rem; }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 3000;
+        }
+
+        .modal-box {
+            background: white;
+            width: 90%;
+            max-width: 400px;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .admin-title-badge h3 { color: #d9534f; font-size: 1.4rem; margin: 0; font-weight: 800; }
+        .admin-title-badge span { font-size: 0.75rem; color: #777; font-weight: 600; }
+
+        .close-modal { background: none; border: none; font-size: 1.3rem; cursor: pointer; color: #888; }
+        .btn-login { width: 100%; background: var(--primary-color); color: white; border: none; padding: 10px; font-weight: bold; border-radius: 5px; cursor: pointer; margin-top: 10px; }
+        .btn-change-pass { width: 100%; background: #e47911; color: white; border: none; padding: 10px; font-weight: bold; border-radius: 5px; cursor: pointer; margin-top: 10px; }
+
+        .admin-only { display: none !important; }
+        body.is-admin .admin-only { display: flex !important; }
+        body.is-admin button.add-cat-btn.admin-only { display: inline-block !important; }
+        body.is-admin button.btn-edit-prod-detail.admin-only { display: block !important; }
+        body.is-admin button.btn-edit-page.admin-only { display: inline-block !important; }
+    </style>
+</head>
+<body>
+
+    <!-- 1. SPLASH SCREEN WITH CUSTOM IMAGE LOGO -->
+    <div id="splash-screen">
+        <div class="splash-step-1" id="step1">
+            <h1>SUMH Traders</h1>
+            <p>Whole Sellers</p>
+        </div>
+        <div class="splash-step-2" id="step2">
+            <img id="anim-logo" class="splash-logo-img" src="" alt="SUMH Logo">
+            <h2>SUMH Traders</h2>
+            <button class="go-btn" onclick="skipSplash()">Go</button>
+        </div>
+    </div>
+
+    <div class="overlay" onclick="toggleMenu()"></div>
+
+    <!-- SIDE NAVIGATION MENU -->
+    <nav class="side-nav" id="sideNav">
+        <ul>
+            <li><a href="#" onclick="showPage('home-view')"><i class="fa fa-home"></i> Home</a></li>
+            <li><a href="#" onclick="showPage('home-view'); scrollToSection('products-sec');"><i class="fa fa-box"></i> Items</a></li>
+            <li><a href="#" onclick="showPage('home-view'); scrollToSection('category-sec');"><i class="fa fa-list"></i> Category</a></li>
+            <li><a href="#" onclick="showPage('wishlist-view')"><i class="fa fa-heart"></i> Wish List</a></li>
+            <li><a href="#" onclick="showPage('cart-view')"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+            <li><a href="#" onclick="showPage('contact-view')"><i class="fa fa-phone"></i> Contact</a></li>
+            <li><a href="#" onclick="showPage('terms-view')"><i class="fa fa-file-contract"></i> Terms & Condition</a></li>
+            <li><a href="#" onclick="showPage('policy-view')"><i class="fa fa-undo"></i> Return Policy</a></li>
+            <li><a href="#" onclick="showPage('about-view')"><i class="fa fa-info-circle"></i> About</a></li>
+            
+            <li style="border-top: 2px solid #f4f4f4; margin-top: 10px;">
+                <a href="#" id="adminMenuBtn" onclick="handleAdminMenuAction()" style="color: #d9534f; font-weight: bold;">
+                    <i class="fa fa-user-shield"></i> Admin Login
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- SHARE APPS MODAL -->
+    <div class="modal-overlay" id="shareModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <div>
+                    <h3 style="color:#232f3e; font-size:1.2rem;"><i class="fa fa-share-alt"></i> Share Product</h3>
+                    <span style="font-size:0.75rem; color:#666;">Choose platform to send link</span>
+                </div>
+                <button class="close-modal" onclick="closeShareModal()">&times;</button>
+            </div>
+            
+            <div class="form-group" style="margin-bottom: 15px;">
+                <label>Direct Product Link:</label>
+                <div style="display: flex; gap: 5px;">
+                    <input type="text" id="shareLinkInput" readonly style="font-size:0.8rem; background:#eee;">
+                    <button onclick="copyLinkFromModal()" style="padding: 8px 12px; background:var(--accent-color); border:none; border-radius:4px; cursor:pointer; font-weight:bold;"><i class="fa fa-copy"></i></button>
+                </div>
+            </div>
+
+            <div class="share-apps-grid" id="shareAppsGrid">
+                <!-- Dynamically Inserted Apps -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMIN MODAL (LOGIN & CREDENTIALS) -->
+    <div class="modal-overlay" id="adminModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <div class="admin-title-badge">
+                    <h3>Only for Admin</h3>
+                    <span>not for Customers</span>
+                </div>
+                <button class="close-modal" onclick="closeAdminModal()">&times;</button>
+            </div>
+            
+            <form onsubmit="processAdminLogin(event)">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="adminUsername" required placeholder="Enter username">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="adminPassword" required placeholder="Enter password">
+                </div>
+                <button type="submit" class="btn-login">Login as Admin</button>
+            </form>
+
+            <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
+
+            <form onsubmit="processChangeCredentials(event)">
+                <h4 style="margin-bottom: 10px; color: #232f3e; font-size: 0.95rem;"><i class="fa fa-key"></i> Change Admin Username / Password</h4>
+                <div class="form-group">
+                    <label>Old Username</label>
+                    <input type="text" id="oldUsername" required placeholder="Enter current username">
+                </div>
+                <div class="form-group">
+                    <label>Old Password</label>
+                    <input type="password" id="oldPassword" required placeholder="Enter current password">
+                </div>
+                <div class="form-group">
+                    <label>New Username</label>
+                    <input type="text" id="newUsername" required placeholder="Enter new username">
+                </div>
+                <div class="form-group">
+                    <label>New Password</label>
+                    <input type="password" id="newPassword" required placeholder="Enter new password">
+                </div>
+                <button type="submit" class="btn-change-pass">Update Credentials</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- PRODUCT ADD MODAL -->
+    <div class="modal-overlay" id="addProductModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <div class="admin-title-badge">
+                    <h3>Add Product</h3>
+                    <span>New Inventory Item</span>
+                </div>
+                <button class="close-modal" onclick="closeAddProductModal()">&times;</button>
+            </div>
+            
+            <form onsubmit="saveNewProduct(event)">
+                <div class="form-group">
+                    <label>Product Title *</label>
+                    <input type="text" id="addProdTitle" required placeholder="Enter title">
+                </div>
+                <div class="form-group">
+                    <label>Sale Price (RS) *</label>
+                    <input type="number" id="addProdPrice" required placeholder="Required Sale Price">
+                </div>
+                <div class="form-group">
+                    <label>Product Price (RS) <small style="color:#777;">(Optional / Original Price)</small></label>
+                    <input type="number" id="addProdOriginalPrice" placeholder="Optional Cut Price">
+                </div>
+                <div class="form-group">
+                    <label>Stock Quantity *</label>
+                    <input type="number" id="addProdStock" value="10" required placeholder="Available stock">
+                </div>
+                <div class="form-group">
+                    <label>Category *</label>
+                    <select id="addProdCat" required></select>
+                </div>
+                <div class="form-group">
+                    <label>Color Options</label>
+                    <input type="text" id="addProdColor" placeholder="e.g. Red, Blue, Black">
+                </div>
+                <div class="form-group">
+                    <label>Images (URLs separated by comma ',') [Max 7]</label>
+                    <textarea id="addProdImages" rows="2" placeholder="http://image1.jpg, http://image2.jpg"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Videos (URLs separated by comma ',') [Max 2]</label>
+                    <textarea id="addProdVideos" rows="2" placeholder="http://video1.mp4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="addProdDesc" rows="3" placeholder="Enter product description"></textarea>
+                </div>
+                <button type="submit" class="btn-login" style="background:#28a745; color:#fff;"><i class="fa fa-plus"></i> Add Product</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- PRODUCT EDIT MODAL -->
+    <div class="modal-overlay" id="editProductModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <div class="admin-title-badge">
+                    <h3>Edit Product</h3>
+                    <span>Update details</span>
+                </div>
+                <button class="close-modal" onclick="closeEditProductModal()">&times;</button>
+            </div>
+            
+            <form onsubmit="saveEditedProduct(event)">
+                <input type="hidden" id="editProdId">
+                <div class="form-group">
+                    <label>Product Title *</label>
+                    <input type="text" id="editProdTitle" required>
+                </div>
+                <div class="form-group">
+                    <label>Sale Price (RS) *</label>
+                    <input type="number" id="editProdPrice" required>
+                </div>
+                <div class="form-group">
+                    <label>Product Price (RS) <small style="color:#777;">(Optional / Original Price)</small></label>
+                    <input type="number" id="editProdOriginalPrice" placeholder="Optional Cut Price">
+                </div>
+                <div class="form-group">
+                    <label>Stock Quantity *</label>
+                    <input type="number" id="editProdStock" required>
+                </div>
+                <div class="form-group">
+                    <label>Category *</label>
+                    <select id="editProdCat" required></select>
+                </div>
+                <div class="form-group">
+                    <label>Color Options</label>
+                    <input type="text" id="editProdColor">
+                </div>
+                <div class="form-group">
+                    <label>Images (URLs separated by comma ',') [Max 7]</label>
+                    <textarea id="editProdImages" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Videos (URLs separated by comma ',') [Max 2]</label>
+                    <textarea id="editProdVideos" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="editProdDesc" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn-login" style="background:#ffc107; color:#000;"><i class="fa fa-save"></i> Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MAIN HOME VIEW -->
+    <div id="home-view" class="page-view active">
+        <header>
+            <div class="top-bar">
+                <div class="top-left">
+                    <img id="header-logo" class="header-logo-img" src="" alt="ST Logo">
+                </div>
+                <div class="top-center">
+                    <h1 class="stylish-title">SUMH TRADERS</h1>
+                </div>
+                <div class="top-right">
+                    <button class="icon-btn" onclick="toggleNotificationPanel()"><i class="fa fa-bell"></i>
+                        <span class="badge" id="notif-count">0</span>
+                    </button>
+                    
+                    <div class="notification-dropdown" id="notifDropdown">
+                        <div class="notif-header">
+                            <span>Notifications</span>
+                            <button class="admin-only" onclick="clearNotifications()" style="border:none; background:none; color:red; cursor:pointer; font-size:0.75rem;">Clear All</button>
+                        </div>
+                        <div class="notif-list" id="notifList"></div>
+                    </div>
+
+                    <button class="icon-btn" onclick="showPage('cart-view')">
+                        <i class="fa fa-shopping-cart"></i>
+                        <span class="badge" id="cart-count">0</span>
+                    </button>
+                </div>
+            </div>
+            <div class="search-bar-row">
+                <div class="menu-btn" onclick="toggleMenu()"><i class="fa fa-bars"></i></div>
+                <input type="text" id="searchInput" class="search-input" placeholder="Search products by title..." onkeyup="filterProducts()">
+            </div>
+        </header>
+
+        <div class="marquee-container">
+            <div class="marquee-text" id="marqueeText">Welcome to SUMH Traders Whole Sellers! Best deals at wholesale prices. Contact us for bulk orders.</div>
+        </div>
+
+        <div class="category-section" id="category-sec">
+            <div class="category-header">
+                <h2>Categories</h2>
+                <button class="add-cat-btn admin-only" onclick="addCategory()"><i class="fa fa-plus"></i> Add Category</button>
+            </div>
+            <div class="category-list" id="categoryList"></div>
+        </div>
+
+        <div class="products-container" id="products-sec">
+            <h3 style="margin-bottom: 15px;">Our Products</h3>
+            <div class="product-grid" id="productGrid"></div>
+        </div>
+    </div>
+
+    <!-- PRODUCT DETAIL VIEW -->
+    <div id="product-detail-view" class="page-view">
+        <div class="detail-header">
+            <button class="icon-btn" style="color:#000;" onclick="showPage('home-view')"><i class="fa fa-arrow-left"></i></button>
+            <button class="icon-btn" style="color:#000;" onclick="showPage('cart-view')"><i class="fa fa-shopping-cart"></i></button>
+        </div>
+        
+        <!-- MAIN MEDIA CONTAINER -->
+        <div class="media-container" id="detailMedia"></div>
+
+        <!-- THUMBNAILS GALLERY -->
+        <div class="gallery-thumbnails" id="galleryThumbnails"></div>
+
+        <div class="detail-body">
+            <div class="price-row">
+                <div class="price-container">
+                    <span class="product-card-price" id="detailPrice" style="font-size: 1.5rem;"></span>
+                    <span class="product-original-price" id="detailOriginalPrice" style="font-size: 1rem;"></span>
+                </div>
+                <button class="like-btn" id="detailLikeBtn" style="position:static;" onclick="toggleWishlistDetail()"><i class="fa fa-heart"></i></button>
+            </div>
+            <h2 id="detailTitle" style="margin-bottom: 5px;"></h2>
+            <p style="font-size: 0.9rem; color: #555; margin-bottom: 10px;">Available Stock: <span id="detailQuantity" style="font-weight:bold; color:#000;"></span></p>
+            <p><strong>Category:</strong> <span id="detailCat"></span></p>
+            <p><strong>Color Options:</strong> <span id="detailColor">Standard</span></p>
+            <hr style="margin: 10px 0;">
+            <p><strong>Description:</strong></p>
+            <p id="detailDescription" style="margin-top: 5px; color: #444; line-height: 1.4;"></p>
+
+            <button class="btn-wishlist-only btn-edit-prod-detail admin-only" style="background:#ffc107; color:#000; margin-top:15px;" onclick="openEditProductModal(activeProduct.id)">
+                <i class="fa fa-edit"></i> Edit Product Details
+            </button>
+            
+            <div id="actionBtnContainer"></div>
+        </div>
+    </div>
+
+    <!-- WISHLIST VIEW -->
+    <div id="wishlist-view" class="page-view">
+        <header>
+            <div class="top-bar">
+                <button class="icon-btn" onclick="showPage('home-view')"><i class="fa fa-arrow-left"></i></button>
+                <h1 class="stylish-title" style="font-size:1.2rem;">Wishlist</h1>
+                <div></div>
+            </div>
+        </header>
+        <div class="products-container">
+            <div class="product-grid" id="wishlistGrid"></div>
+        </div>
+    </div>
+
+    <!-- CART VIEW -->
+    <div id="cart-view" class="page-view">
+        <header>
+            <div class="top-bar">
+                <div style="display: flex; gap: 10px;">
+                    <button class="icon-btn" onclick="toggleMenu()"><i class="fa fa-bars"></i></button>
+                    <button class="icon-btn" onclick="showPage('home-view')"><i class="fa fa-home"></i></button>
+                </div>
+                <h1 class="stylish-title" style="font-size:1.2rem;">SUMH TRADERS</h1>
+                <div></div>
+            </div>
+        </header>
+
+        <div style="padding: 15px;">
+            <h3>Your Selected Items</h3>
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th>S.No</th>
+                        <th>Item</th>
+                        <th>Qty</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="cartTableBody"></tbody>
+            </table>
+
+            <div style="text-align: right; margin-top: 15px; font-weight: bold;">
+                <p>Subtotal: RS <span id="subTotal">0</span></p>
+                <p style="font-size: 1.2rem; color: #e47911;">Total: RS <span id="grandTotal">0</span></p>
+            </div>
+
+            <div class="checkout-form">
+                <h4>Customer Details</h4>
+                <form id="orderForm" onsubmit="sendWhatsAppOrder(event)">
+                    <div class="form-group">
+                        <label>Customer Name</label>
+                        <input type="text" id="custName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" id="custEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" id="custPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Other Number</label>
+                        <input type="tel" id="custOtherPhone">
+                    </div>
+                    <div class="form-group">
+                        <label>Province</label>
+                        <select id="custProvince" required>
+                            <option value="" disabled selected>Select Province</option>
+                            <option value="Punjab">Punjab</option>
+                            <option value="Sindh">Sindh</option>
+                            <option value="Khyber Pakhtunkhwa">Khyber Pakhtunkhwa (KPK)</option>
+                            <option value="Balochistan">Balochistan</option>
+                            <option value="Islamabad Capital Territory">Islamabad Capital Territory</option>
+                            <option value="Gilgit-Baltistan">Gilgit-Baltistan</option>
+                            <option value="Azad Jammu & Kashmir">Azad Jammu & Kashmir (AJK)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>City</label>
+                        <input type="text" id="custCity" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Address</label>
+                        <input type="text" id="custAddress" required>
+                    </div>
+                    <button type="submit" class="btn-submit"><i class="fab fa-whatsapp"></i> Submit / Send Order via WhatsApp</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACT PAGE -->
+    <div id="contact-view" class="page-view content-page" style="background-image: url('https://res.cloudinary.com/bqasq7fp/image/upload/v1784642671/backgroung_image_spduvz.jpg');">
+        <button class="icon-btn" onclick="showPage('home-view')" style="margin-bottom: 15px;"><i class="fa fa-arrow-left"></i> Back</button>
+        <div class="content-box">
+            <h2>Contact Us</h2>
+            <p style="margin-top: 10px;"><i class="fa fa-phone"></i> Phone: <span id="contactPhoneText">+92 300 0000000</span></p>
+            <p><i class="fa fa-envelope"></i> Email: <span id="contactEmailText">info@sumhtraders.com</span></p>
+            <p><i class="fa fa-map-marker-alt"></i> Address: <span id="contactAddressText">Main Wholesale Market, Pakistan</span></p>
+            <div class="social-links dynamic-social-links" style="margin-top: 20px;">
+                <!-- Dynamically Populated -->
+            </div>
+            <button class="btn-edit-page admin-only" onclick="editContactInfo()"><i class="fa fa-edit"></i> Edit Contact Info</button>
+        </div>
+    </div>
+
+    <!-- TERMS & CONDITIONS -->
+    <div id="terms-view" class="page-view content-page" style="background-image: url('https://res.cloudinary.com/bqasq7fp/image/upload/v1784642671/backgroung_image_spduvz.jpg');">
+        <button class="icon-btn" onclick="showPage('home-view')" style="margin-bottom: 15px;"><i class="fa fa-arrow-left"></i> Back</button>
+        <div class="content-box">
+            <h2>Terms & Conditions</h2>
+            <p id="termsText" style="margin-top:10px; white-space: pre-line;">1. All wholesale orders require verification upon confirmation.<br>2. Prices are subject to market conditions.<br>3. Delivery charges depend on destination city and parcel weight.</p>
+            <button class="btn-edit-page admin-only" onclick="editPageContent('terms')"><i class="fa fa-edit"></i> Edit Terms & Conditions</button>
+        </div>
+    </div>
+
+    <!-- RETURN POLICY -->
+    <div id="policy-view" class="page-view content-page" style="background-image: url('https://res.cloudinary.com/bqasq7fp/image/upload/v1784642671/backgroung_image_spduvz.jpg');">
+        <button class="icon-btn" onclick="showPage('home-view')" style="margin-bottom: 15px;"><i class="fa fa-arrow-left"></i> Back</button>
+        <div class="content-box">
+            <h2>Return Policy</h2>
+            <p id="policyText" style="margin-top:10px; white-space: pre-line;">1. Seal-packed items will not be returned.<br>2. Product must be unused and in original packaging.<br>3. Damaged items during shipping will be replaced after video proof.</p>
+            <button class="btn-edit-page admin-only" onclick="editPageContent('policy')"><i class="fa fa-edit"></i> Edit Return Policy</button>
+        </div>
+    </div>
+
+    <!-- ABOUT PAGE -->
+    <div id="about-view" class="page-view content-page" style="background-image: url('https://res.cloudinary.com/bqasq7fp/image/upload/v1784642671/backgroung_image_spduvz.jpg');">
+        <button class="icon-btn" onclick="showPage('home-view')" style="margin-bottom: 15px;"><i class="fa fa-arrow-left"></i> Back</button>
+        <div class="content-box">
+            <h2>About SUMH Traders</h2>
+            <p id="aboutText" style="margin-top: 10px; white-space: pre-line;">SUMH Traders is a leading wholesale supplier delivering high-quality products across Pakistan. We specialize in electronics, fashion, household items, and offer direct bulk pricing with fast delivery options.</p>
+            <button class="btn-edit-page admin-only" onclick="editPageContent('about')"><i class="fa fa-edit"></i> Edit About Us</button>
+        </div>
+    </div>
+
+    <!-- FOOTER WITH DYNAMIC SOCIAL LINKS -->
+    <footer id="mainFooter">
+        <p>SUMH Traders &copy; 2026</p>
+        <div class="social-links dynamic-social-links">
+            <!-- Dynamically Populated -->
+        </div>
+    </footer>
+
+    <!-- ADMIN FLOATING BUTTONS -->
+    <div class="admin-fab-container admin-only">
+        <div class="admin-fab admin-fab-social" onclick="adminEditSocialLinks()" title="Update Social & Order WhatsApp Links"><i class="fa fa-share-alt"></i></div>
+        <div class="admin-fab admin-fab-marquee" onclick="adminEditMarquee()" title="Edit Slide Text"><i class="fa fa-scroll"></i></div>
+        <div class="admin-fab admin-fab-notif" onclick="adminAddNotification()" title="Add Notification"><i class="fa fa-bell"></i></div>
+        <div class="admin-fab" onclick="openAddProductModal()" title="Add Product">+</div>
+    </div>
+
+    <!-- SCRIPT SECTION -->
+    <script>
+        let myLogoUrl = "https://res.cloudinary.com/bqasq7fp/image/upload/v1784665006/logo_kfutcj_asxykz.jpg"; 
+
+        let isAdminLoggedIn = false;
+        let selectedCategory = 'All';
+
+        let defaultSocialLinks = {
+            whatsapp: "https://wa.me/923302428115",
+            tiktok: "https://tiktok.com/@sumhtraders",
+            facebook: "https://www.facebook.com/share/1Epd8PZvj3/",
+            instagram: "https://www.instagram.com/sumhtraders?igsh=MWoxMDJjaW82d2x1ZQ=="
+        };
+        let defaultOrderWhatsApp = "923302428115";
+
+        let defaultCategories = ['Electronics', 'Fashion', 'Household'];
+        let defaultNotifications = [
+            "Welcome to SUMH Traders!",
+            "New wholesale electronics available now."
+        ];
+        let defaultProducts = [
+            { id: 1, title: 'Wireless Bluetooth Earbuds', price: 2500, originalPrice: 3500, category: 'Electronics', image: 'https://picsum.photos/300/300?random=1', images: ['https://picsum.photos/300/300?random=1'], videos: [], isVideo: false, color: 'Black, White', desc: 'High quality sound with long battery life.', stock: 15, hidden: false },
+            { id: 2, title: 'Smart Watch Series 8', price: 4500, originalPrice: 6000, category: 'Electronics', image: 'https://picsum.photos/300/300?random=2', images: ['https://picsum.photos/300/300?random=2'], videos: [], isVideo: false, color: 'Silver, Black', desc: 'Fitness tracking, heart rate monitor, HD screen.', stock: 0, hidden: false },
+            { id: 3, title: 'Casual Mens Jacket', price: 3800, originalPrice: null, category: 'Fashion', image: 'https://picsum.photos/300/300?random=3', images: ['https://picsum.photos/300/300?random=3'], videos: [], isVideo: false, color: 'Blue, Brown', desc: 'Warm and comfortable jacket for winter.', stock: 8, hidden: false },
+            { id: 4, title: 'Electric Kitchen Blender', price: 5200, originalPrice: 6500, category: 'Household', image: 'https://picsum.photos/300/300?random=4', images: ['https://picsum.photos/300/300?random=4'], videos: [], isVideo: false, color: 'Red, Silver', desc: 'Multi-purpose blender for kitchen usage.', stock: 5, hidden: false }
+        ];
+
+        let defaultPageTexts = {
+            about: "SUMH Traders is a leading wholesale supplier delivering high-quality products across Pakistan. We specialize in electronics, fashion, household items, and offer direct bulk pricing with fast delivery options.",
+            terms: "1. All wholesale orders require verification upon confirmation.\n2. Prices are subject to market conditions.\n3. Delivery charges depend on destination city and parcel weight.",
+            policy: "1. Seal-packed items will not be returned.\n2. Product must be unused and in original packaging.\n3. Damaged items during shipping will be replaced after video proof.",
+            contactPhone: "+92 300 0000000",
+            contactEmail: "info@sumhtraders.com",
+            contactAddress: "Main Wholesale Market, Pakistan"
+        };
+
+        let categories = JSON.parse(localStorage.getItem('sumh_categories')) || defaultCategories;
+        let notifications = JSON.parse(localStorage.getItem('sumh_notifications')) || defaultNotifications;
+        let products = JSON.parse(localStorage.getItem('sumh_products')) || defaultProducts;
+        let socialLinks = JSON.parse(localStorage.getItem('sumh_social_links')) || defaultSocialLinks;
+        let myWhatsAppNumber = localStorage.getItem('sumh_order_whatsapp') || defaultOrderWhatsApp;
+        let pageTexts = JSON.parse(localStorage.getItem('sumh_page_texts')) || defaultPageTexts;
+
+        function saveAllData() {
+            localStorage.setItem('sumh_categories', JSON.stringify(categories));
+            localStorage.setItem('sumh_notifications', JSON.stringify(notifications));
+            localStorage.setItem('sumh_products', JSON.stringify(products));
+            localStorage.setItem('sumh_social_links', JSON.stringify(socialLinks));
+            localStorage.setItem('sumh_order_whatsapp', myWhatsAppNumber);
+            localStorage.setItem('sumh_page_texts', JSON.stringify(pageTexts));
+        }
+
+        let cart = [];
+        let wishlist = [];
+        let activeProduct = null;
+
+        function renderPageTexts() {
+            if (document.getElementById('aboutText')) document.getElementById('aboutText').innerText = pageTexts.about || defaultPageTexts.about;
+            if (document.getElementById('termsText')) document.getElementById('termsText').innerText = pageTexts.terms || defaultPageTexts.terms;
+            if (document.getElementById('policyText')) document.getElementById('policyText').innerText = pageTexts.policy || defaultPageTexts.policy;
+            if (document.getElementById('contactPhoneText')) document.getElementById('contactPhoneText').innerText = pageTexts.contactPhone || defaultPageTexts.contactPhone;
+            if (document.getElementById('contactEmailText')) document.getElementById('contactEmailText').innerText = pageTexts.contactEmail || defaultPageTexts.contactEmail;
+            if (document.getElementById('contactAddressText')) document.getElementById('contactAddressText').innerText = pageTexts.contactAddress || defaultPageTexts.contactAddress;
+        }
+
+        function editPageContent(type) {
+            if(!isAdminLoggedIn) return;
+            let currentText = pageTexts[type] || defaultPageTexts[type];
+            let newText = prompt(`Naya content likhein (${type.toUpperCase()}):`, currentText);
+            if(newText !== null && newText.trim() !== "") {
+                pageTexts[type] = newText.trim();
+                saveAllData();
+                renderPageTexts();
+                alert("Content update ho gaya!");
+            }
+        }
+
+        function editContactInfo() {
+            if(!isAdminLoggedIn) return;
+            let p = prompt("Phone Number likhein:", pageTexts.contactPhone || defaultPageTexts.contactPhone);
+            let e = prompt("Email Address likhein:", pageTexts.contactEmail || defaultPageTexts.contactEmail);
+            let a = prompt("Market / Shop Address likhein:", pageTexts.contactAddress || defaultPageTexts.contactAddress);
+
+            if(p !== null) pageTexts.contactPhone = p.trim();
+            if(e !== null) pageTexts.contactEmail = e.trim();
+            if(a !== null) pageTexts.contactAddress = a.trim();
+
+            saveAllData();
+            renderPageTexts();
+            alert("Contact Details update ho gayi hain!");
+        }
+
+        function renderSocialLinks() {
+            let elements = document.querySelectorAll('.dynamic-social-links');
+            let html = `
+                <a href="${socialLinks.whatsapp}" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="${socialLinks.tiktok}" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="${socialLinks.facebook}" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="${socialLinks.instagram}" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            `;
+            elements.forEach(el => el.innerHTML = html);
+        }
+
+        function adminEditSocialLinks() {
+            if(!isAdminLoggedIn) return;
+            
+            let wa = prompt("WhatsApp Contact/Chat Link (e.g. https://wa.me/923302428115):", socialLinks.whatsapp);
+            let tt = prompt("TikTok Link:", socialLinks.tiktok);
+            let fb = prompt("Facebook Link:", socialLinks.facebook);
+            let ig = prompt("Instagram Link:", socialLinks.instagram);
+            let orderWa = prompt("Cart Order Recieve karne wala WhatsApp Number (e.g. 923302428115 without +):", myWhatsAppNumber);
+
+            if(wa) socialLinks.whatsapp = wa.trim();
+            if(tt) socialLinks.tiktok = tt.trim();
+            if(fb) socialLinks.facebook = fb.trim();
+            if(ig) socialLinks.instagram = ig.trim();
+            if(orderWa) myWhatsAppNumber = orderWa.trim();
+
+            saveAllData();
+            renderSocialLinks();
+            alert("Social Links aur WhatsApp Number updated successfully!");
+        }
+
+        function getStoredCredentials() {
+            let u = localStorage.getItem('admin_username') || "admin";
+            let p = localStorage.getItem('admin_password') || "1234";
+            return { username: u, password: p };
+        }
+
+        window.onload = function() {
+            document.getElementById('anim-logo').src = myLogoUrl;
+            document.getElementById('header-logo').src = myLogoUrl;
+
+            setTimeout(() => {
+                document.getElementById('step1').style.display = 'none';
+                document.getElementById('step2').style.display = 'block';
+                setTimeout(() => {
+                    skipSplash();
+                }, 3000);
+            }, 3000);
+
+            let savedMarquee = localStorage.getItem('marquee_text');
+            if(savedMarquee) {
+                document.getElementById('marqueeText').innerText = savedMarquee;
+            }
+
+            renderCategories();
+            renderProducts(products);
+            renderNotifications();
+            renderSocialLinks();
+            renderPageTexts();
+            checkUrlProductHash();
+        };
+
+        function checkUrlProductHash() {
+            if (window.location.hash && window.location.hash.startsWith('#product-')) {
+                let prodId = parseInt(window.location.hash.replace('#product-', ''));
+                if (prodId) {
+                    setTimeout(() => { openProductDetail(prodId); }, 1200);
+                }
+            }
+        }
+
+        function skipSplash() {
+            let logo = document.getElementById('anim-logo');
+            logo.classList.add('zoom-expand');
+            setTimeout(() => {
+                document.getElementById('splash-screen').style.display = 'none';
+            }, 1000);
+        }
+
+        function adminEditMarquee() {
+            if(!isAdminLoggedIn) return;
+            let currentText = document.getElementById('marqueeText').innerText;
+            let newText = prompt("Naya Slide Text likhein:", currentText);
+            if(newText && newText.trim() !== "") {
+                document.getElementById('marqueeText').innerText = newText.trim();
+                localStorage.setItem('marquee_text', newText.trim());
+                alert("Slide Text update ho gaya hai!");
+            }
+        }
+
+        function handleAdminMenuAction() {
+            if (isAdminLoggedIn) {
+                isAdminLoggedIn = false;
+                document.body.classList.remove('is-admin');
+                document.getElementById('adminMenuBtn').innerHTML = `<i class="fa fa-user-shield"></i> Admin Login`;
+                alert("Aap Logout ho chuke hain.");
+                renderCategories();
+                renderProducts(products);
+                renderNotifications();
+                toggleMenu();
+            } else {
+                toggleMenu();
+                document.getElementById('adminModal').style.display = 'flex';
+            }
+        }
+
+        function closeAdminModal() {
+            document.getElementById('adminModal').style.display = 'none';
+        }
+
+        function processAdminLogin(e) {
+            e.preventDefault();
+            let u = document.getElementById('adminUsername').value;
+            let p = document.getElementById('adminPassword').value;
+
+            let currentCreds = getStoredCredentials();
+
+            if (u === currentCreds.username && p === currentCreds.password) {
+                isAdminLoggedIn = true;
+                document.body.classList.add('is-admin');
+                document.getElementById('adminMenuBtn').innerHTML = `<i class="fa fa-sign-out-alt"></i> Admin Logout`;
+                closeAdminModal();
+                alert("Welcome Admin!");
+                renderCategories();
+                renderProducts(products);
+                renderNotifications();
+                document.getElementById('adminUsername').value = '';
+                document.getElementById('adminPassword').value = '';
+            } else {
+                alert("Ghalat Username ya Password!");
+            }
+        }
+
+        function processChangeCredentials(e) {
+            e.preventDefault();
+            let oldU = document.getElementById('oldUsername').value;
+            let oldP = document.getElementById('oldPassword').value;
+            let newU = document.getElementById('newUsername').value;
+            let newP = document.getElementById('newPassword').value;
+
+            let currentCreds = getStoredCredentials();
+
+            if (oldU === currentCreds.username && oldP === currentCreds.password) {
+                localStorage.setItem('admin_username', newU);
+                localStorage.setItem('admin_password', newP);
+
+                alert("Username aur Password badal diya gaya hai!");
+
+                document.getElementById('oldUsername').value = '';
+                document.getElementById('oldPassword').value = '';
+                document.getElementById('newUsername').value = '';
+                document.getElementById('newPassword').value = '';
+
+                closeAdminModal();
+            } else {
+                alert("Old credentials ghalat hain!");
+            }
+        }
+
+        function renderNotifications() {
+            let list = document.getElementById('notifList');
+            let countBadge = document.getElementById('notif-count');
+            countBadge.innerText = notifications.length;
+
+            if (notifications.length === 0) {
+                list.innerHTML = `<div class="notif-empty">No new notifications</div>`;
+                return;
+            }
+
+            list.innerHTML = '';
+            notifications.forEach((notif, idx) => {
+                let deleteBtn = isAdminLoggedIn ? `<button onclick="deleteNotification(${idx})" style="border:none; background:none; color:#aaa; cursor:pointer;"><i class="fa fa-times"></i></button>` : '';
+                list.innerHTML += `
+                    <div class="notif-item">
+                        <span>${notif}</span>
+                        ${deleteBtn}
+                    </div>
+                `;
+            });
+        }
+
+        function toggleNotificationPanel() {
+            let drop = document.getElementById('notifDropdown');
+            drop.style.display = (drop.style.display === 'block') ? 'none' : 'block';
+        }
+
+        function adminAddNotification() {
+            if(!isAdminLoggedIn) return;
+            let text = prompt("Nayi Notification likhein:");
+            if (text && text.trim() !== "") {
+                notifications.unshift(text.trim());
+                saveAllData();
+                renderNotifications();
+            }
+        }
+
+        function deleteNotification(idx) {
+            if(!isAdminLoggedIn) return;
+            notifications.splice(idx, 1);
+            saveAllData();
+            renderNotifications();
+        }
+
+        function clearNotifications() {
+            if(!isAdminLoggedIn) return;
+            notifications = [];
+            saveAllData();
+            renderNotifications();
+        }
+
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', function() {
+            let st = window.pageYOffset || document.documentElement.scrollTop;
+            let footer = document.getElementById('mainFooter');
+            if (st > lastScrollTop) {
+                footer.classList.add('hide');
+            } else {
+                footer.classList.remove('hide');
+            }
+            lastScrollTop = st <= 0 ? 0 : st;
+        });
+
+        function toggleMenu() {
+            document.getElementById('sideNav').classList.toggle('open');
+            let overlay = document.querySelector('.overlay');
+            overlay.style.display = overlay.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function showPage(pageId) {
+            document.querySelectorAll('.page-view').forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            if (document.getElementById('sideNav').classList.contains('open')) {
+                toggleMenu();
+            }
+            window.scrollTo(0,0);
+        }
+
+        function scrollToSection(secId) {
+            document.getElementById(secId).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function renderCategories() {
+            let catContainer = document.getElementById('categoryList');
+            catContainer.innerHTML = '';
+
+            let allActiveClass = (selectedCategory === 'All') ? 'active-cat' : '';
+            catContainer.innerHTML += `
+                <div class="category-card ${allActiveClass}" onclick="filterCategory('All')">
+                    All Items
+                </div>
+            `;
+
+            categories.forEach(cat => {
+                let activeClass = (selectedCategory === cat) ? 'active-cat' : '';
+                let adminActions = isAdminLoggedIn ? `
+                    <div class="cat-actions">
+                        <button class="cat-action-btn" onclick="editCategory(event, '${cat}')" title="Rename"><i class="fa fa-pen"></i></button>
+                        <button class="cat-action-btn" onclick="deleteCategory(event, '${cat}')" title="Delete"><i class="fa fa-trash"></i></button>
+                    </div>
+                ` : '';
+
+                catContainer.innerHTML += `
+                    <div class="category-card ${activeClass}" onclick="filterCategory('${cat}')">
+                        <span>${cat}</span>
+                        ${adminActions}
+                    </div>
+                `;
+            });
+        }
+
+        function addCategory() {
+            if(!isAdminLoggedIn) return;
+            let catName = prompt("Nayi Category ka Naam likhein:");
+            if(catName && catName.trim() !== "") {
+                catName = catName.trim();
+                if(!categories.includes(catName)) {
+                    categories.push(catName);
+                    saveAllData();
+                    renderCategories();
+                } else {
+                    alert("Yeh category pehle se mojood hai.");
+                }
+            }
+        }
+
+        function editCategory(e, oldName) {
+            if(e) e.stopPropagation();
+            if(!isAdminLoggedIn) return;
+            let newName = prompt("Category ka naya naam likhein:", oldName);
+            if(newName && newName.trim() !== "" && newName !== oldName) {
+                newName = newName.trim();
+                let index = categories.indexOf(oldName);
+                if(index !== -1) {
+                    categories[index] = newName;
+                    products.forEach(p => {
+                        if(p.category === oldName) p.category = newName;
+                    });
+                    if(selectedCategory === oldName) selectedCategory = newName;
+                    saveAllData();
+                    renderCategories();
+                    renderProducts(products);
+                }
+            }
+        }
+
+        function deleteCategory(e, catName) {
+            if(e) e.stopPropagation();
+            if(!isAdminLoggedIn) return;
+            if(confirm(`Kya aap category "${catName}" ko delete karna chahte hain?`)) {
+                categories = categories.filter(c => c !== catName);
+                if(selectedCategory === catName) selectedCategory = 'All';
+                saveAllData();
+                renderCategories();
+                filterCategory(selectedCategory);
+            }
+        }
+
+        function filterCategory(cat) {
+            selectedCategory = cat;
+            renderCategories();
+            if(cat === 'All') {
+                renderProducts(products);
+            } else {
+                let filtered = products.filter(p => p.category === cat);
+                renderProducts(filtered);
+            }
+        }
+
+        function getProductLink(id) {
+            let baseUrl = window.location.href.split('#')[0];
+            return `${baseUrl}#product-${id}`;
+        }
+
+        function copyProductLink(e, id) {
+            if(e) e.stopPropagation();
+            let link = getProductLink(id);
+            navigator.clipboard.writeText(link).then(() => {
+                alert("Product Link Copied to Clipboard!\n" + link);
+            }).catch(() => {
+                prompt("Copy this link:", link);
+            });
+        }
+
+        function shareProductLink(e, id, title) {
+            if(e) e.stopPropagation();
+            
+            let link = getProductLink(id);
+            let shareText = `Check out this product on SUMH Traders: ${title || 'SUMH Traders Item'}\n${link}`;
+            let encText = encodeURIComponent(shareText);
+            let encLink = encodeURIComponent(link);
+
+            document.getElementById('shareLinkInput').value = link;
+
+            let apps = [
+                { name: "WhatsApp", icon: "fab fa-whatsapp", color: "#25D366", url: `https://api.whatsapp.com/send?text=${encText}` },
+                { name: "Messenger", icon: "fab fa-facebook-messenger", color: "#0084FF", url: `fb-messenger://share/?link=${encLink}` },
+                { name: "Facebook", icon: "fab fa-facebook", color: "#1877F2", url: `https://www.facebook.com/sharer/sharer.php?u=${encLink}` },
+                { name: "Telegram", icon: "fab fa-telegram-plane", color: "#0088cc", url: `https://t.me/share/url?url=${encLink}&text=${encodeURIComponent(title || '')}` },
+                { name: "Instagram", icon: "fab fa-instagram", color: "#E4405F", url: `https://instagram.com` },
+                { name: "TikTok", icon: "fab fa-tiktok", color: "#000000", url: `https://tiktok.com` },
+                { name: "SMS Messages", icon: "fa fa-comment-dots", color: "#28a745", url: `sms:?body=${encText}` },
+                { name: "WeChat", icon: "fab fa-weixin", color: "#07C160", url: `weixin://` },
+                { name: "Snapchat", icon: "fab fa-snapchat-ghost", color: "#FFFC00", url: `https://www.snapchat.com/scan?attachmentUrl=${encLink}` },
+                { name: "Twitter / X", icon: "fab fa-x-twitter", color: "#000000", url: `https://twitter.com/intent/tweet?text=${encText}` },
+                { name: "Email", icon: "fa fa-envelope", color: "#ea4335", url: `mailto:?subject=${encodeURIComponent(title || 'SUMH Traders')}&body=${encText}` }
+            ];
+
+            let gridHtml = "";
+            apps.forEach(app => {
+                gridHtml += `
+                    <a href="${app.url}" target="_blank" class="share-app-item" onclick="closeShareModal()">
+                        <i class="${app.icon}" style="color: ${app.color};"></i>
+                        <span>${app.name}</span>
+                    </a>
+                `;
+            });
+
+            document.getElementById('shareAppsGrid').innerHTML = gridHtml;
+            document.getElementById('shareModal').style.display = 'flex';
+        }
+
+        function closeShareModal() {
+            document.getElementById('shareModal').style.display = 'none';
+        }
+
+        function copyLinkFromModal() {
+            let input = document.getElementById('shareLinkInput');
+            navigator.clipboard.writeText(input.value).then(() => {
+                alert("Link Copied to Clipboard!");
+            }).catch(() => {
+                prompt("Copy Link:", input.value);
+            });
+        }
+
+        function renderProducts(items) {
+            let grid = document.getElementById('productGrid');
+            grid.innerHTML = '';
+
+            let filteredItems = (selectedCategory === 'All') ? items : items.filter(p => p.category === selectedCategory);
+
+            if(!isAdminLoggedIn) {
+                filteredItems = filteredItems.filter(p => !p.hidden);
+            }
+
+            if(filteredItems.length === 0) {
+                grid.innerHTML = `<p style="grid-column: 1/-1; text-align:center; color:#777;">Is category mein koi products nahi hain.</p>`;
+                return;
+            }
+
+            filteredItems.forEach(p => {
+                let isLiked = wishlist.includes(p.id);
+                let isSoldOut = p.stock <= 0;
+                let isHidden = p.hidden || false;
+
+                let badgeMarkup = '';
+                if(isHidden) {
+                    badgeMarkup = `<div class="hidden-badge">Hidden</div>`;
+                } else if(isSoldOut) {
+                    badgeMarkup = `<div class="sold-badge">Sold Out</div>`;
+                }
+
+                let displayImg = (p.images && p.images.length > 0) ? p.images[0] : p.image;
+
+                let cardClasses = `product-card ${isSoldOut ? 'sold-out' : ''} ${isHidden ? 'hidden-card' : ''}`;
+
+                let adminQtyControls = isAdminLoggedIn ? `
+                    <div class="qty-controls">
+                        <span style="font-size:0.75rem; font-weight:bold;">Stock:</span>
+                        <div>
+                            <button class="qty-btn" onclick="updateStock(event, ${p.id}, -1)">-</button>
+                            <span style="margin: 0 5px; font-weight:bold; font-size:0.85rem;">${p.stock}</span>
+                            <button class="qty-btn" onclick="updateStock(event, ${p.id}, 1)">+</button>
+                        </div>
+                    </div>
+                    <div class="admin-action-bar">
+                        <button class="admin-btn btn-edit" onclick="openEditProductModal(event, ${p.id})" title="Edit Product">
+                            <i class="fa fa-edit"></i> Edit
+                        </button>
+                        <button class="admin-btn btn-hide" onclick="toggleHideProduct(event, ${p.id})" title="${isHidden ? 'Unhide Product' : 'Hide Product'}">
+                            <i class="fa ${isHidden ? 'fa-eye-slash' : 'fa-eye'}"></i> ${isHidden ? 'Unhide' : 'Hide'}
+                        </button>
+                        <button class="admin-btn btn-delete" onclick="deleteProduct(event, ${p.id})" title="Delete Product">
+                            <i class="fa fa-trash"></i> Delete
+                        </button>
+                    </div>
+                ` : '';
+
+                let originalPriceHtml = p.originalPrice ? `<div class="product-original-price">RS ${p.originalPrice}</div>` : '';
+
+                grid.innerHTML += `
+                    <div class="${cardClasses}">
+                        ${badgeMarkup}
+                        <button class="like-btn ${isLiked ? 'liked' : ''}" onclick="toggleWishlist(event, ${p.id})">
+                            <i class="fa fa-heart"></i>
+                        </button>
+                        <img src="${displayImg}" alt="${p.title}" onclick="openProductDetail(${p.id})">
+                        <div class="product-card-body" onclick="openProductDetail(${p.id})">
+                            <div class="product-card-title">${p.title}</div>
+                            <div class="price-container">
+                                <div class="product-card-price">RS ${p.price}</div>
+                                ${originalPriceHtml}
+                            </div>
+                            <div class="stock-qty-text">Stock: <b>${p.stock}</b></div>
+                        </div>
+                        ${adminQtyControls}
+                        <div class="product-share-bar">
+                            <button class="share-btn-item" onclick="copyProductLink(event, ${p.id})">
+                                <i class="fa fa-copy"></i> Copy Link
+                            </button>
+                            <button class="share-btn-item" onclick="shareProductLink(event, ${p.id}, '${p.title.replace(/'/g, "\\'")}')">
+                                <i class="fa fa-share-alt"></i> Share
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function openAddProductModal() {
+            if(!isAdminLoggedIn) return;
+            
+            let catSelect = document.getElementById('addProdCat');
+            catSelect.innerHTML = '';
+            categories.forEach(c => {
+                catSelect.innerHTML += `<option value="${c}">${c}</option>`;
+            });
+
+            document.getElementById('addProductModal').style.display = 'flex';
+        }
+
+        function closeAddProductModal() {
+            document.getElementById('addProductModal').style.display = 'none';
+        }
+
+        function saveNewProduct(e) {
+            e.preventDefault();
+            if(!isAdminLoggedIn) return;
+
+            let title = document.getElementById('addProdTitle').value.trim();
+            let price = parseFloat(document.getElementById('addProdPrice').value) || 0;
+            let originalPriceInput = document.getElementById('addProdOriginalPrice').value.trim();
+            let originalPrice = originalPriceInput ? (parseFloat(originalPriceInput) || null) : null;
+            let stock = parseInt(document.getElementById('addProdStock').value) || 0;
+            let selectedCat = document.getElementById('addProdCat').value;
+            let color = document.getElementById('addProdColor').value.trim() || 'Standard';
+            let desc = document.getElementById('addProdDesc').value.trim();
+
+            let imgInput = document.getElementById('addProdImages').value;
+            let uploadedImages = [];
+            if (imgInput && imgInput.trim() !== '') {
+                uploadedImages = imgInput.split(',').map(url => url.trim()).filter(url => url !== '').slice(0, 7);
+            }
+            if (uploadedImages.length === 0) {
+                uploadedImages.push(`https://picsum.photos/300/300?random=${Math.floor(Math.random()*100)}`);
+            }
+
+            let vidInput = document.getElementById('addProdVideos').value;
+            let uploadedVideos = [];
+            if (vidInput && vidInput.trim() !== '') {
+                uploadedVideos = vidInput.split(',').map(url => url.trim()).filter(url => url !== '').slice(0, 2);
+            }
+
+            let newId = Date.now();
+            let newProduct = {
+                id: newId,
+                title: title,
+                price: price,
+                originalPrice: originalPrice,
+                stock: stock,
+                category: selectedCat,
+                image: uploadedImages[0],
+                images: uploadedImages,
+                videos: uploadedVideos,
+                isVideo: false,
+                color: color,
+                desc: desc,
+                hidden: false
+            };
+
+            products.push(newProduct);
+            saveAllData();
+            closeAddProductModal();
+            renderProducts(products);
+
+            document.getElementById('addProdTitle').value = '';
+            document.getElementById('addProdPrice').value = '';
+            document.getElementById('addProdOriginalPrice').value = '';
+            document.getElementById('addProdStock').value = '10';
+            document.getElementById('addProdColor').value = '';
+            document.getElementById('addProdImages').value = '';
+            document.getElementById('addProdVideos').value = '';
+            document.getElementById('addProdDesc').value = '';
+
+            let generatedLink = getProductLink(newId);
+            alert(`Product Added Successfully!\n\nAuto Generated Link:\n${generatedLink}`);
+        }
+
+        function openEditProductModal(e, id) {
+            if (typeof e === 'object' && e !== null) {
+                e.stopPropagation();
+            } else {
+                id = e;
+            }
+            if(!isAdminLoggedIn) return;
+
+            let product = products.find(p => p.id === id);
+            if(!product) return;
+
+            document.getElementById('editProdId').value = product.id;
+            document.getElementById('editProdTitle').value = product.title;
+            document.getElementById('editProdPrice').value = product.price;
+            document.getElementById('editProdOriginalPrice').value = product.originalPrice || '';
+            document.getElementById('editProdStock').value = product.stock;
+            document.getElementById('editProdColor').value = product.color || 'Standard';
+            document.getElementById('editProdDesc').value = product.desc || '';
+
+            let catSelect = document.getElementById('editProdCat');
+            catSelect.innerHTML = '';
+            categories.forEach(c => {
+                let selected = (c === product.category) ? 'selected' : '';
+                catSelect.innerHTML += `<option value="${c}" ${selected}>${c}</option>`;
+            });
+
+            let imgs = product.images ? product.images.join(', ') : (product.image || '');
+            let vids = product.videos ? product.videos.join(', ') : '';
+
+            document.getElementById('editProdImages').value = imgs;
+            document.getElementById('editProdVideos').value = vids;
+
+            document.getElementById('editProductModal').style.display = 'flex';
+        }
+
+        function closeEditProductModal() {
+            document.getElementById('editProductModal').style.display = 'none';
+        }
+
+        function saveEditedProduct(e) {
+            e.preventDefault();
+            let id = parseInt(document.getElementById('editProdId').value);
+            let product = products.find(p => p.id === id);
+
+            if(product) {
+                product.title = document.getElementById('editProdTitle').value.trim();
+                product.price = parseFloat(document.getElementById('editProdPrice').value) || 0;
+                
+                let origPriceInput = document.getElementById('editProdOriginalPrice').value.trim();
+                product.originalPrice = origPriceInput ? (parseFloat(origPriceInput) || null) : null;
+
+                product.stock = parseInt(document.getElementById('editProdStock').value) || 0;
+                product.category = document.getElementById('editProdCat').value;
+                product.color = document.getElementById('editProdColor').value.trim();
+                product.desc = document.getElementById('editProdDesc').value.trim();
+
+                let imgInput = document.getElementById('editProdImages').value;
+                let uploadedImages = imgInput.split(',').map(url => url.trim()).filter(url => url !== '').slice(0, 7);
+                if (uploadedImages.length === 0) {
+                    uploadedImages.push('https://picsum.photos/300/300?random=1');
+                }
+                product.images = uploadedImages;
+                product.image = uploadedImages[0];
+
+                let vidInput = document.getElementById('editProdVideos').value;
+                let uploadedVideos = vidInput.split(',').map(url => url.trim()).filter(url => url !== '').slice(0, 2);
+                product.videos = uploadedVideos;
+
+                saveAllData();
+                closeEditProductModal();
+                renderProducts(products);
+
+                if(activeProduct && activeProduct.id === id) {
+                    openProductDetail(id);
+                }
+
+                alert('Product details successfully updated!');
+            }
+        }
+
+        function toggleHideProduct(e, id) {
+            if(e) e.stopPropagation();
+            if(!isAdminLoggedIn) return;
+            let product = products.find(p => p.id === id);
+            if(product) {
+                product.hidden = !product.hidden;
+                saveAllData();
+                renderProducts(products);
+            }
+        }
+
+        function deleteProduct(e, id) {
+            if(e) e.stopPropagation();
+            if(!isAdminLoggedIn) return;
+            if(confirm("Kya aap waqai is product ko delete karna chahte hain?")) {
+                products = products.filter(p => p.id !== id);
+                saveAllData();
+                renderProducts(products);
+            }
+        }
+
+        function updateStock(e, id, change) {
+            if(e) e.stopPropagation();
+            if(!isAdminLoggedIn) return;
+            let product = products.find(p => p.id === id);
+            if(product) {
+                let newStock = product.stock + change;
+                if(newStock >= 0) {
+                    product.stock = newStock;
+                    saveAllData();
+                    renderProducts(products);
+                    if(activeProduct && activeProduct.id === id) {
+                        openProductDetail(id);
+                    }
+                }
+            }
+        }
+
+        function filterProducts() {
+            let query = document.getElementById('searchInput').value.toLowerCase();
+            let filtered = products.filter(p => p.title.toLowerCase().includes(query));
+            renderProducts(filtered);
+        }
+
+        function toggleWishlist(e, id) {
+            if(e) e.stopPropagation();
+            let idx = wishlist.indexOf(id);
+            if(idx > -1) {
+                wishlist.splice(idx, 1);
+            } else {
+                wishlist.push(id);
+            }
+            renderProducts(products);
+            renderWishlist();
+        }
+
+        function toggleWishlistDetail() {
+            if(!activeProduct) return;
+            toggleWishlist(null, activeProduct.id);
+            let btn = document.getElementById('detailLikeBtn');
+            if(wishlist.includes(activeProduct.id)) {
+                btn.classList.add('liked');
+            } else {
+                btn.classList.remove('liked');
+            }
+        }
+
+        function renderWishlist() {
+            let grid = document.getElementById('wishlistGrid');
+            grid.innerHTML = '';
+            let wishItems = products.filter(p => wishlist.includes(p.id) && (!p.hidden || isAdminLoggedIn));
+            wishItems.forEach(p => {
+                let isSoldOut = p.stock <= 0;
+                let displayImg = (p.images && p.images.length > 0) ? p.images[0] : p.image;
+                let originalPriceHtml = p.originalPrice ? `<div class="product-original-price">RS ${p.originalPrice}</div>` : '';
+
+                grid.innerHTML += `
+                    <div class="product-card ${isSoldOut ? 'sold-out' : ''}" onclick="openProductDetail(${p.id})">
+                        ${isSoldOut ? `<div class="sold-badge">Sold Out</div>` : ''}
+                        <img src="${displayImg}">
+                        <div class="product-card-body">
+                            <div class="product-card-title">${p.title}</div>
+                            <div class="price-container">
+                                <div class="product-card-price">RS ${p.price}</div>
+                                ${originalPriceHtml}
+                            </div>
+                            <div class="stock-qty-text">Stock: <b>${p.stock}</b></div>
+                        </div>
+                        <div class="product-share-bar">
+                            <button class="share-btn-item" onclick="copyProductLink(event, ${p.id})">
+                                <i class="fa fa-copy"></i> Copy Link
+                            </button>
+                            <button class="share-btn-item" onclick="shareProductLink(event, ${p.id}, '${p.title.replace(/'/g, "\\'")}')">
+                                <i class="fa fa-share-alt"></i> Share
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function openProductDetail(id) {
+            activeProduct = products.find(p => p.id === id);
+            if(!activeProduct) return;
+
+            window.location.hash = `product-${id}`;
+
+            document.getElementById('detailTitle').innerText = activeProduct.title;
+            document.getElementById('detailPrice').innerText = 'RS ' + activeProduct.price;
+            
+            let origPriceEl = document.getElementById('detailOriginalPrice');
+            if(activeProduct.originalPrice) {
+                origPriceEl.innerText = 'RS ' + activeProduct.originalPrice;
+                origPriceEl.style.display = 'block';
+            } else {
+                origPriceEl.style.display = 'none';
+            }
+
+            document.getElementById('detailColor').innerText = activeProduct.color || 'Standard';
+            document.getElementById('detailCat').innerText = activeProduct.category;
+            document.getElementById('detailDescription').innerText = activeProduct.desc;
+            document.getElementById('detailQuantity').innerText = activeProduct.stock + ' units';
+            
+            let btnContainer = document.getElementById('actionBtnContainer');
+
+            let cartOrWish = activeProduct.stock <= 0 
+                ? `<button class="btn-wishlist-only" onclick="toggleWishlistDetail()"><i class="fa fa-heart"></i> Add to Wishlist (Sold Out)</button>` 
+                : `<button class="btn-add-cart" onclick="addCurrentToCart()">Add to Cart</button>`;
+
+            btnContainer.innerHTML = `
+                ${cartOrWish}
+                <div style="display:flex; gap:10px; margin-top:10px;">
+                    <button class="btn-wishlist-only" style="background:#17a2b8; margin:0;" onclick="copyProductLink(null, ${activeProduct.id})">
+                        <i class="fa fa-copy"></i> Copy Product Link
+                    </button>
+                    <button class="btn-wishlist-only" style="background:#28a745; margin:0;" onclick="shareProductLink(null, ${activeProduct.id}, '${activeProduct.title.replace(/'/g, "\\'")}')">
+                        <i class="fa fa-share-alt"></i> Share Product
+                    </button>
+                </div>
+            `;
+
+            let likeBtn = document.getElementById('detailLikeBtn');
+            if(wishlist.includes(activeProduct.id)) {
+                likeBtn.classList.add('liked');
+            } else {
+                likeBtn.classList.remove('liked');
+            }
+
+            let imageList = activeProduct.images || [activeProduct.image];
+            let videoList = activeProduct.videos || [];
+
+            setMainMedia(imageList[0] || 'https://via.placeholder.com/300', false);
+
+            let thumbContainer = document.getElementById('galleryThumbnails');
+            thumbContainer.innerHTML = '';
+
+            imageList.forEach((imgUrl, idx) => {
+                let thumb = document.createElement('img');
+                thumb.src = imgUrl;
+                thumb.className = `thumb-item ${idx === 0 ? 'active-thumb' : ''}`;
+                thumb.onclick = function() {
+                    setMainMedia(imgUrl, false);
+                    highlightThumb(this);
+                };
+                thumbContainer.appendChild(thumb);
+            });
+
+            videoList.forEach((vidUrl, idx) => {
+                let wrapper = document.createElement('div');
+                wrapper.className = 'thumb-video-wrapper';
+                
+                let thumbVid = document.createElement('video');
+                thumbVid.src = vidUrl;
+                thumbVid.className = 'thumb-item';
+
+                let icon = document.createElement('i');
+                icon.className = 'fa fa-play-circle';
+
+                wrapper.appendChild(thumbVid);
+                wrapper.appendChild(icon);
+
+                wrapper.onclick = function() {
+                    setMainMedia(vidUrl, true);
+                    highlightThumb(thumbVid);
+                };
+                thumbContainer.appendChild(wrapper);
+            });
+
+            showPage('product-detail-view');
+        }
+
+        function setMainMedia(url, isVideo) {
+            let mediaContainer = document.getElementById('detailMedia');
+            if(isVideo) {
+                mediaContainer.innerHTML = `<video src="${url}" controls autoplay style="max-width:100%; max-height:350px;"></video>`;
+            } else {
+                mediaContainer.innerHTML = `<img src="${url}" style="max-width:100%; max-height:350px; object-fit:contain;">`;
+            }
+        }
+
+        function highlightThumb(selectedEl) {
+            document.querySelectorAll('.thumb-item').forEach(el => el.classList.remove('active-thumb'));
+            selectedEl.classList.add('active-thumb');
+        }
+
+        function addCurrentToCart() {
+            if(!activeProduct) return;
+            if(activeProduct.stock <= 0) {
+                alert('Yeh product sold out hai!');
+                return;
+            }
+            let existing = cart.find(c => c.id === activeProduct.id);
+            if(existing) {
+                if(existing.qty < activeProduct.stock) {
+                    existing.qty++;
+                } else {
+                    alert(`Available stock is only ${activeProduct.stock}`);
+                    return;
+                }
+            } else {
+                cart.push({ ...activeProduct, qty: 1 });
+            }
+            updateCartUI();
+            alert('Added to Cart!');
+        }
+
+        function updateCartUI() {
+            document.getElementById('cart-count').innerText = cart.reduce((a, b) => a + b.qty, 0);
+            let tbody = document.getElementById('cartTableBody');
+            tbody.innerHTML = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                let itemTotal = item.price * item.qty;
+                total += itemTotal;
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${item.title}</td>
+                        <td>
+                            <input type="number" min="1" max="${item.stock}" value="${item.qty}" style="width:40px;" onchange="changeQty(${item.id}, this.value)">
+                        </td>
+                        <td>RS ${itemTotal}</td>
+                        <td><button onclick="removeFromCart(${item.id})" style="color:red; border:none; background:none;"><i class="fa fa-trash"></i></button></td>
+                    </tr>
+                `;
+            });
+
+            document.getElementById('subTotal').innerText = total;
+            document.getElementById('grandTotal').innerText = total;
+        }
+
+        function changeQty(id, qty) {
+            let item = cart.find(c => c.id === id);
+            if(item) {
+                let val = parseInt(qty) || 1;
+                if(val > item.stock) {
+                    alert(`Stock available only: ${item.stock}`);
+                    item.qty = item.stock;
+                } else {
+                    item.qty = val;
+                }
+                updateCartUI();
+            }
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(c => c.id !== id);
+            updateCartUI();
+        }
+
+        function sendWhatsAppOrder(e) {
+            e.preventDefault();
+            if(cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+
+            let name = document.getElementById('custName').value;
+            let email = document.getElementById('custEmail').value;
+            let phone = document.getElementById('custPhone').value;
+            let otherPhone = document.getElementById('custOtherPhone').value;
+            let province = document.getElementById('custProvince').value;
+            let city = document.getElementById('custCity').value;
+            let address = document.getElementById('custAddress').value;
+
+            let msg = `*NEW ORDER - SUMH TRADERS*\n\n`;
+            msg += `*Customer Details:*\n`;
+            msg += `Name: ${name}\n`;
+            msg += `Email: ${email}\n`;
+            msg += `Phone: ${phone}\n`;
+            msg += `Other Phone: ${otherPhone}\n`;
+            msg += `Province: ${province}\n`;
+            msg += `City: ${city}\n`;
+            msg += `Address: ${address}\n\n`;
+            msg += `*Ordered Items:*\n`;
+
+            cart.forEach((item, i) => {
+                msg += `${i+1}. ${item.title} x ${item.qty} = RS ${item.price * item.qty}\n`;
+            });
+
+            msg += `\n*Grand Total:* RS ${document.getElementById('grandTotal').innerText}`;
+
+            let url = `https://wa.me/${myWhatsAppNumber}?text=${encodeURIComponent(msg)}`;
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
